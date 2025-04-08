@@ -1,0 +1,72 @@
+.file-feedback {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9375rem;
+}
+.file-feedback__label {
+  font-size: 0.875rem;
+}
+.file-feedback__items {
+  position: relative;
+  width: fit-content;
+}
+.file-feedback__input {
+  position: absolute;
+  inline-size: 100%;
+  block-size: 100%;
+  font-size: 0;
+  opacity: 0;
+  z-index: -1;
+}
+.file-feedback__input:focus-visible {
+  outline: 0.1875rem solid var(--dark-color);
+  outline-offset: 0.1875rem;
+}
+.file-feedback__button {
+  font-size: 1rem;
+  cursor: pointer;
+}
+.file-feedback__previews {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.375rem, auto));
+  gap: 0.3125rem;
+}
+.file-feedback__preview {
+  border-radius: 0.625rem;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 250 / 200;
+}
+
+.file-feedback__image {
+}
+
+.form-feedback__delete {
+  position: absolute;
+  top: 0.3125rem;
+  right: 0.3125rem;
+  inline-size: 1.5625rem;
+  block-size: 1.5625rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--light-color);
+  background-color: rgba(58, 58, 58, 0.7);
+  border-radius: 0.125rem;
+}
+.form-feedback__delete::before,
+.form-feedback__delete::after {
+  content: "";
+  position: absolute;
+  inline-size: 70%;
+  block-size: 0.125rem;
+  background-color: currentColor;
+}
+
+.form-feedback__delete::before {
+  rotate: 45deg;
+}
+
+.form-feedback__delete::after {
+  rotate: -45deg;
+}

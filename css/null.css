@@ -1,0 +1,34 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+a[class] {
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+button {
+  cursor: pointer;
+}
+
+img {
+  vertical-align: top;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  /* max-inline-size: 100%;
+  block-size: auto;
+  object-fit: cover; */
+}

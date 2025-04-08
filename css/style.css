@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700&display=swap");
+@import "./variables.css";
+@import "./null.css";
+@import "./globals.css";
+
+/* Подключение блоков */
+@import "./blocks/header.css";
+@import "./blocks/btn.css";
+@import "./blocks/checkbox.css";
+@import "./blocks/options.css";
+@import "./blocks/hero.css";
+@import "./blocks/form-feedback.css";
+@import "./blocks/feedback.css";
+@import "./blocks/file-feedback.css";
+
+@import "./common.css";

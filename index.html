@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./js/app.js" type="module"></script>
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Пробую все подряд</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <div class="header__wrapper">
+        <div class="header__container">
+          <div class="header__body">
+            <a class="header__logo" href="#">Лого</a>
+            <div class="header__menu menu">
+              <nav class="menu__body">
+                <ul class="menu__list list-reset">
+                  <li class="menu__item"><a class="menu__link" href="#">Главная</a></li>
+                  <li class="menu__item"><a class="menu__link" href="#">Заглавная</a></li>
+                  <li class="menu__item"><a class="menu__link" href="#">Проглавная</a></li>
+                </ul>
+              </nav>
+            </div>
+            <button type="button" class="icon-menu btn-reset"><span></span></button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="page">
+      <section class="page__hero hero">
+        <div class="hero__container">
+          <div class="hero__body">
+            <div class="hero__content">
+              <h1 class="hero__title">Заголовок hero блока</h1>
+              <div class="hero__descr">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quis eos nisi, ducimus facere
+                  molestias voluptates? Placeat ea similique accusantium, error, aspernatur dolor ipsa voluptatem non
+                  fugit tenetur, incidunt eum.</p>
+              </div>
+              <a class="hero__link btn btn--accent" href="#">Перейти</a>
+            </div>
+            <img class="hero__image" width="550" height="530" src="./img/cover-2.jpg" alt="Картинка" loading="lazy">
+          </div>
+        </div>
+      </section>
+      <section class="page__feedback feedback">
+        <div class="feedback__container">
+          <div class="feedback__top">
+            <h2 class="feedback__title">Попытка отправить форму</h2>
+            <div class="feedback__descr">
+              <p>Далеко-далеко за словесными горами в стране гласных и согласных, живут рыбные тексты. Которое собрал
+                предупреждал текста строчка рукописи образ снова заманивший. От всех моей рыбными страну жаренные
+                грамматики продолжил, о первую бросил грустный!</p>
+            </div>
+          </div>
+          <div class="feedback__body">
+            <form class="feedback__form form-feedback" id="form-feedback" action="#">
+              <div class="form-feedback__body">
+                <div class="form-feedback__items">
+                  <label class="form-feedback__item">
+                    <span class="form-feedback__label">Ваше имя</span>
+                    <input class="form-feedback__input" type="text" placeholder="Имя" name="feedback-name"
+                      data-required="name">
+                  </label>
+                  <label class="form-feedback__item">
+                    <span class="form-feedback__label">Ваш email</span>
+                    <input class="form-feedback__input" type="text" placeholder="Email" name="feedback-email"
+                      data-required="email">
+                  </label>
+                  <div class="form-feedback__item">
+                    <span class="form-feedback__label">Ваш пол</span>
+                    <div class="form-feedback__options options">
+                      <label class="options__item">
+                        <input class="options__input" type="radio" checked value="male" name="gender">
+                        <span class="options__label">Мужской</span>
+                      </label>
+                      <label class="options__item">
+                        <input class="options__input" type="radio" value="female" name="gender">
+                        <span class="options__label">Женский</span>
+                      </label>
+                    </div>
+                  </div>
+                  <label class="form-feedback__item">
+                    <textarea class="form-feedback__input" placeholder="Сообщение" data-required
+                      name="feedback-message"></textarea>
+                  </label>
+                  <div class="form-feedback__file file-feedback">
+                    <div class="file-feedback__label">Выбрать файл</div>
+                    <label class="file-feedback__items">
+                      <input class="file-feedback__input" type="file" accept=".jpg, .png, .gif" multiple>
+                      <span class="file-feedback__button btn btn--accent">Добавить</span>
+                    </label>
+                    <div class="file-feedback__previews"></div>
+                  </div>
+                  <div class="form-feedback__item">
+                    <div class="form-feedback__checkbox checkbox">
+                      <label class="checkbox__item">
+                        <input class="checkbox__input" type="checkbox" checked>
+                        <span class="checkbox__label">Я согласен на обработку персональных данных и ознакомился с
+                          <a href="#">политикой конфиденциальности</a></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="form-feedback__button btn btn--primary btn-reset">Отправить</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer__container">
+        footer
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>

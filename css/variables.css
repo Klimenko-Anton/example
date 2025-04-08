@@ -1,0 +1,10 @@
+:root {
+  --dark-color: #282828;
+  --light-color: #fcfcfc;
+
+  --font-family: "Montserrat", sans-serif;
+
+  --font-size: 1.125rem;
+
+  --trans-elem: 0.2s cubic-bezier(0.2, 0.41, 0.5, 0.39);
+}

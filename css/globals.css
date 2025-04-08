@@ -1,0 +1,42 @@
+html,
+body {
+  block-size: 100%;
+  min-inline-size: 20rem;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  background-color: var(--light-color);
+  color: var(--dark-color);
+}
+
+[class*="__container"] {
+  max-inline-size: 78.125rem;
+  margin-inline: auto;
+  padding-inline: 0.9375rem;
+}
+
+.wrapper {
+  min-block-size: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: clip;
+}
+
+.wrapper > main {
+  flex: 1 1 auto;
+}
+
+.btn-reset {
+  border: none;
+  background-color: transparent;
+}
+
+.list-reset {
+  list-style: none;
+}
