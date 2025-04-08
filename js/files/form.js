@@ -9,6 +9,14 @@ export function feedbackForm() {
     }
   });
 
+  document.addEventListener('click', function (e) {
+    const target = e.target;
+
+    if (target.closest('.form-feedback__delete')) {
+      target.closest(".file-feedback__preview").remove();
+    }
+  })
+
   const form = document.getElementById('form-feedback');
   const formSend = async (e) => {
     e.preventDefault();
@@ -74,26 +82,9 @@ export function feedbackForm() {
     }
   });
 
-  // function uploadFile(files) {
-  //   let reader = new FileReader();
-
-  //   for (let i = 0; i < files.length; i++) {
-  //     const file = files[i];
-  //     reader.onload = function (e) {
-  //       console.log(e);
-  //       filePreview.innerHTML = `<img class="file-feedback__image" src="${e.target.result}" alt="" />`;
-  //     }
-  //   }
-
-  //   reader.readAsDataURL(files);
-
-  // }
-
   function uploadFiles(files) {
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
-
-      // Проверяем, что файл является изображением
       if (!file.type.match('image.*')) {
         filePreview.parentElement.insertAdjacentHTML("beforeend", `<div class="form-feedback__warning">Разрешены только изображения</div>`);
         return;
@@ -105,6 +96,9 @@ export function feedbackForm() {
 
       const reader = new FileReader();
 
+      reader.fileName = file.name;
+      reader.fileSize = file.size;
+
       reader.onload = function (e) {
         // Создаем элемент для превью
         const preview = document.createElement('div');
@@ -113,17 +107,34 @@ export function feedbackForm() {
         const deleteImage = document.createElement("button");
         deleteImage.classList.add("form-feedback__delete", "btn-reset");
 
+        const infoPreview = document.createElement("div");
+        infoPreview.classList.add("file-feedback__info");
+
+        const filesName = document.createElement("div");
+        filesName.classList.add("file-feedback__file-name");
+        filesName.textContent = `${this.fileName}`;
+
+        const filesSize = document.createElement("div");
+        filesSize.classList.add("file-feedback__file-size");
+        filesSize.textContent = `${formatBytes(this.fileSize)}`;
+
         // Создаем изображение
         const img = document.createElement('img');
         img.className = 'file-feedback__image';
         img.src = e.target.result;
 
+
+        infoPreview.append(filesName, filesSize);
+
         // Добавляем изображение в превью
         preview.appendChild(img);
         preview.appendChild(deleteImage);
+        preview.appendChild(infoPreview);
 
         // Добавляем превью в контейнер (не перезаписывая существующие)
         filePreview.appendChild(preview);
+        console.log(e);
+
       };
 
       reader.onerror = function () {
@@ -131,6 +142,18 @@ export function feedbackForm() {
       };
 
       reader.readAsDataURL(file);
+    }
+  }
+
+  function formatBytes(bytes, decimals = 2) {
+    if (bytes === 0) {
+      return '0';
+    } else {
+      var k = 1024;
+      var dm = decimals < 0 ? 0 : decimals;
+      var sizes = ['байт', 'КБ', 'МБ', 'ГБ', 'ТБ'];
+      var i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
     }
   }
 

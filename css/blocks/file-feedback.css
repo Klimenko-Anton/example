@@ -35,10 +35,15 @@
   border-radius: 0.625rem;
   overflow: hidden;
   position: relative;
-  aspect-ratio: 250 / 200;
+  /* aspect-ratio: 250 / 200; */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .file-feedback__image {
+  aspect-ratio: 250 / 150;
+  border-radius: 0.625rem;
 }
 
 .form-feedback__delete {
@@ -53,6 +58,7 @@
   color: var(--light-color);
   background-color: rgba(58, 58, 58, 0.7);
   border-radius: 0.125rem;
+  transition: translate var(--trans-elem);
 }
 .form-feedback__delete::before,
 .form-feedback__delete::after {
@@ -69,4 +75,32 @@
 
 .form-feedback__delete::after {
   rotate: -45deg;
+}
+
+.form-feedback__delete:focus-visible {
+  translate: 0 0;
+}
+
+@media (any-hover: hover) {
+  .form-feedback__delete {
+    translate: 200% 0;
+  }
+}
+
+@media (any-hover: hover) {
+  .file-feedback__preview:hover .form-feedback__delete {
+    translate: 0 0;
+  }
+}
+
+.file-feedback__info {
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+  padding-inline: 0.625rem;
+}
+
+.file-feedback__file-size {
 }
