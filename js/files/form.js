@@ -73,7 +73,7 @@ export function feedbackForm() {
 
   const inputFile = document.querySelector(".file-feedback__input");
   const filePreview = document.querySelector(".file-feedback__previews");
-
+  const MAX_FILES = 5;
   inputFile.addEventListener("change", function () {
     const files = inputFile.files;
     if (files.length > 0) {
@@ -94,13 +94,24 @@ export function feedbackForm() {
         }
       }
 
-      const reader = new FileReader();
+      const currentCount = filePreview.querySelectorAll('.file-feedback__preview').length;
 
+      if (currentCount + files.length > MAX_FILES) {
+        const availableSlots = MAX_FILES - currentCount;
+        filePreview.parentElement.insertAdjacentHTML("beforeend", `<div class="form-feedback__warning">Лимит файлов превышен (максимум ${MAX_FILES})</div>`);
+        setTimeout(function () {
+          if (filePreview.parentElement.querySelector(".form-feedback__warning")) {
+            filePreview.parentElement.removeChild(filePreview.parentElement.querySelector(".form-feedback__warning"));
+          }
+        }, 3000)
+        return;
+      }
+
+      const reader = new FileReader();
       reader.fileName = file.name;
       reader.fileSize = file.size;
 
       reader.onload = function (e) {
-        // Создаем элемент для превью
         const preview = document.createElement('div');
         preview.className = 'file-feedback__preview';
 
@@ -118,29 +129,20 @@ export function feedbackForm() {
         filesSize.classList.add("file-feedback__file-size");
         filesSize.textContent = `${formatBytes(this.fileSize)}`;
 
-        // Создаем изображение
         const img = document.createElement('img');
         img.className = 'file-feedback__image';
         img.src = e.target.result;
 
-
         infoPreview.append(filesName, filesSize);
-
-        // Добавляем изображение в превью
         preview.appendChild(img);
         preview.appendChild(deleteImage);
         preview.appendChild(infoPreview);
-
-        // Добавляем превью в контейнер (не перезаписывая существующие)
         filePreview.appendChild(preview);
-        console.log(e);
-
       };
 
       reader.onerror = function () {
         console.error(`Ошибка при чтении файла ${file.name}`);
       };
-
       reader.readAsDataURL(file);
     }
   }
