@@ -103,9 +103,20 @@ export function feedbackForm() {
           if (filePreview.parentElement.querySelector(".form-feedback__warning")) {
             filePreview.parentElement.removeChild(filePreview.parentElement.querySelector(".form-feedback__warning"));
           }
-        }, 3000)
+        }, 3000);
         return;
       }
+
+      if (file.size > 10 * 1024 * 1024) {
+        filePreview.parentElement.insertAdjacentHTML("beforeend", `<div class="form-feedback__warning">Максимальный размер файла 10 Мб</div>`);
+        setTimeout(function () {
+          if (filePreview.parentElement.querySelector(".form-feedback__warning")) {
+            filePreview.parentElement.removeChild(filePreview.parentElement.querySelector(".form-feedback__warning"));
+          }
+        }, 3000);
+        return;
+      }
+
 
       const reader = new FileReader();
       reader.fileName = file.name;
@@ -118,13 +129,6 @@ export function feedbackForm() {
         const deleteImage = document.createElement("button");
         deleteImage.classList.add("form-feedback__delete", "btn-reset");
 
-        const infoPreview = document.createElement("div");
-        infoPreview.classList.add("file-feedback__info");
-
-        const filesName = document.createElement("div");
-        filesName.classList.add("file-feedback__file-name");
-        filesName.textContent = `${this.fileName}`;
-
         const filesSize = document.createElement("div");
         filesSize.classList.add("file-feedback__file-size");
         filesSize.textContent = `${formatBytes(this.fileSize)}`;
@@ -133,10 +137,9 @@ export function feedbackForm() {
         img.className = 'file-feedback__image';
         img.src = e.target.result;
 
-        infoPreview.append(filesName, filesSize);
         preview.appendChild(img);
         preview.appendChild(deleteImage);
-        preview.appendChild(infoPreview);
+        preview.appendChild(filesSize);
         filePreview.appendChild(preview);
       };
 
